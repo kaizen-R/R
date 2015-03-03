@@ -10,7 +10,7 @@ git config --global user.email "<youremail@mail.com>"
 git config --list
 
 # Choose a directory to use as REPO:
-cd /Users/nico/Documents/R_Repo
+cd /somedirectory/R_Repo
 # Initialize a REPO in the current directory:
 git init
 # Linking the local REPO to the GITHUB Repo:
