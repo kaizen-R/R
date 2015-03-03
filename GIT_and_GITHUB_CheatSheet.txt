@@ -1,0 +1,37 @@
+## ATTENTION THIS IS *NOT* AN R SCRITP
+# A quick cheat-sheet for working with Git and GitHub
+# My own REPO:
+https://github.com/<youruser>/R.git
+
+# Settings, email MUST be the same as the one on GITHUB:
+git config --global user.name "<youruser>"
+git config --global user.email "<youremail@mail.com>"
+# Confirm changes:
+git config ???list
+
+# Choose a directory to use as REPO:
+cd /Users/nico/Documents/R_Repo
+# Initialize a REPO in the current directory:
+git init
+# Linking the local REPO to the GITHUB Repo:
+git remote add origin https://github.com/<youruser>/R.git
+# Checking that too:
+git ls-remote
+
+
+# Note: To clone a REPO on GITHUB to the current directory:
+git clone https://github.com/<youruser>/R.git
+
+
+# You???ll need to first sync the remote GitHub data to your directory
+git pull origin master
+
+# Then only, you can add the files you create locally to GitHub
+# Add all files in the folder to your local REPO follow-up
+git add .
+# Add tracking to files changes (removed, renamed???)
+git add -u
+# Then commit the change, commenting it better even:
+git commit -m "Test upload to GitHub???
+# And finally, sync the changes in local Repo to remote one:
+git push -u origin master
