@@ -8,3 +8,6 @@ library(slidify)
 # check if a package is available
 find.package("slidify")
 # Will return Error if does not exist...
+# So you need to get it from somewhere else, i.e. not CRAN:
+devtools::install_github(c('ramnathv/slidifyLibraries', 'ramnathv/slidify'))
+# Thanks to https://github.com/ramnathv
