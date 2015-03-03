@@ -23,13 +23,13 @@ git ls-remote
 git clone https://github.com/<youruser>/<yourREPOName>.git
 
 
-# You???ll need to first sync the remote GitHub data to your directory
+# You'll need to first sync the remote GitHub data to your directory
 git pull origin master
 
 # Then only, you can add the files you create locally to GitHub
 # Add all files in the folder to your local REPO follow-up
 git add .
-# Add tracking to files changes (removed, renamed???)
+# Add tracking to files changes (removed, renamed...)
 git add -u
 # Then commit the change, commenting it better even:
 git commit -m "Test upload to GitHub"
