@@ -7,7 +7,7 @@ https://github.com/<youruser>/R.git
 git config --global user.name "<youruser>"
 git config --global user.email "<youremail@mail.com>"
 # Confirm changes:
-git config ???list
+git config --list
 
 # Choose a directory to use as REPO:
 cd /Users/nico/Documents/R_Repo
@@ -20,7 +20,7 @@ git ls-remote
 
 
 # Note: To clone a REPO on GITHUB to the current directory:
-git clone https://github.com/<youruser>/R.git
+git clone https://github.com/<youruser>/<yourREPOName>.git
 
 
 # You???ll need to first sync the remote GitHub data to your directory
@@ -32,6 +32,6 @@ git add .
 # Add tracking to files changes (removed, renamed???)
 git add -u
 # Then commit the change, commenting it better even:
-git commit -m "Test upload to GitHub???
+git commit -m "Test upload to GitHub"
 # And finally, sync the changes in local Repo to remote one:
 git push -u origin master
