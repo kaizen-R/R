@@ -1,4 +1,5 @@
-# Good stuff inspired originally by: https://leonawicz.github.io/HtmlWidgetExamples/ex_dt_sparkline.html
+# Sources: https://cran.r-project.org/web/packages/sparkline/index.html
+# Good stuff also inspired originally by: https://leonawicz.github.io/HtmlWidgetExamples/ex_dt_sparkline.html
 
 library(dplyr)
 library(tidyr)
