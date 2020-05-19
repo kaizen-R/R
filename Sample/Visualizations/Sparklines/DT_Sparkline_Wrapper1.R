@@ -1,4 +1,5 @@
-# Interfaces for Data Manipulation
+# Good stuff inspired originally by: https://leonawicz.github.io/HtmlWidgetExamples/ex_dt_sparkline.html
+
 library(dplyr)
 library(tidyr)
 
@@ -6,8 +7,6 @@ library(DT)
 library(sparkline)
 
 # DT Sparkline wrapper function:
-# Good stuff inspired originally by: https://leonawicz.github.io/HtmlWidgetExamples/ex_dt_sparkline.html
-
 DT_sparklines <- function(mydf, myvar, mygroup = NULL, myfilter = NULL) {
   ## Sparklines for DT
   js <- "function(data, type, full){ return '<span class=spark>' + data + '</span>' }"
