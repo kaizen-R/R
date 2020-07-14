@@ -22,13 +22,39 @@
 # IP addresses are added randomly from those still available in a standard private IP range.
 # I throw in some upper case and mixed up FQDN, for good measure...
 
+## Let's make this a double exercise: We'll check on memory usage as we go...
+#utils::install.packages("pryr")
+library(pryr)
+
+
 num_machines <- 100
 
 # I have never found such a simple scenario, but this should be good enough for demo purposes:
-machine_names <- paste0(sample(c("Win", "Lin"), num_machines, replace = TRUE), "Demo0",1:num_machines)
+machine_names <- NULL
 
-# Let's keep a copy for later:
-machine_names_bck <- machine_names
+machine_names <- paste0(sample(c("Win", "Lin"), num_machines, replace = TRUE), "Demo0", 1:num_machines)
+
+object_size(machine_names)
+
+# Let's keep a copy for later: And let's see what happens to memory after this...
+mem_used()
+mem_change(machine_names_bck <- machine_names)
+object_size(machine_names_bck)
+object_size(machine_names)
+object_size(machine_names) + object_size(machine_names_bck)
+object_size(machine_names, machine_names_bck)
+# Interesting how this is not double the size at all...
+
+length(machine_names)
+machine_names[100] <- "test memory and variables in R - 'copy on modify' trick"
+object_size(machine_names_bck)
+object_size(machine_names)
+object_size(machine_names) + object_size(machine_names_bck)
+object_size(machine_names, machine_names_bck)
+
+mem_used()
+machine_names <- NULL
+machine_names <- machine_names_bck
 
 # Let's make it more interesting/realistic:
 complex_machine_names <- sample(1:num_machines, 50)
