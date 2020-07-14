@@ -1,7 +1,7 @@
 # File: cmdb_generator.R
-# Version: 0.1
+# Version: 0.2
 # Created by: Nico (a.k.a. Nick)
-# Date last edited: 2020/07/11
+# Date last edited: 2020/07/14
 
 # Demo dataset: Trying to be true to real life, but without showing real data.
 # This demo dataset is messy ON PURPOSE, to demo some R code to work on it and make it "tidy".
