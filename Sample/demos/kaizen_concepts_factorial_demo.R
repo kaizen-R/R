@@ -190,9 +190,9 @@ own_factorial_v5(10000)
 # End tests v5 ----
 
 ## Enough for the versions.
-# We could demo try-catch instead of a simple "if" statement, we could see limits of the R numeric 
-# variables... But that's beyond this exercise. Let's just say there are more situations we could 
-# test.
+# We could demo try-catch instead of a simple "if" statement, use on.exit(), we could see limits 
+# of the R numeric variables... But that's beyond this exercise. Let's just say there are more 
+# situations we could test.
 #
 # Now what IS within our goals with "Kaizen-R" is to IMPROVE, not ONLY on style, but ALSO in terms 
 # of efficiency.
