@@ -155,10 +155,10 @@ IP_obj <- setRefClass(
       paste(Map(octet, c(24, 16, 8, 0)), sep = "", collapse = ".")
     },
     calculate_private = function() {
-      if((.self$.ipnum > 2886729728 && .self$.ipnum < 2886737919) || #172.16.0.0/12
-         (.self$.ipnum > 167772160 && .self$.ipnum < 184549375) || # 10.0.0.0/8
-         (.self$.ipnum > 3232235520 && .self$.ipnum < 3232301055) || # 192.168.0.0/16
-         (.self$.ipnum > 2851995648 && .self$.ipnum < 2852061183)) # 169.254.0.0/16
+      if((.self$.ipnum >= 2886729728 && .self$.ipnum <= 2886737919) || #172.16.0.0/12
+         (.self$.ipnum >= 167772160 && .self$.ipnum <= 184549375) || # 10.0.0.0/8
+         (.self$.ipnum >= 3232235520 && .self$.ipnum <= 3232301055) || # 192.168.0.0/16
+         (.self$.ipnum >= 2851995648 && .self$.ipnum <= 2852061183)) # 169.254.0.0/16
         return(TRUE)
       FALSE
     },
