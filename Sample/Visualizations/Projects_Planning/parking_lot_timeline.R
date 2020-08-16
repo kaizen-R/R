@@ -10,6 +10,8 @@ library(lubridate)
 library(ggplot2)
 #install.packages("ggExtra") # Was missing that one...
 library(ggExtra)
+# install.packages("plotly")
+library(plotly)
 
 # Demo Data ----
 # Let's create sample data to demo the objectives:
@@ -34,7 +36,7 @@ duedates <- c(c("20200501", "20200601", "20200615", "20200630"), # Past date, th
               rep("2020-12-30", 4)) # Lubridate will be managing different compatible formats on its own.
 
 
-# Playing with data table instead of dataframes ----
+# Playing with data table instead of dataframes----
 
 # Let's play with Data.table instead of Dataframes, as an exercise:
 demo_dt <- data.table(project = projects, phase = phases, status = status, duedate = duedates)
@@ -58,10 +60,17 @@ demo_dt[(status < 1) & (duedate < Sys.Date()), status_color := "red"]
 demo_dt
 
 # Let's get to the visualization: ----
-demo_plot <- ggplot(demo_dt, aes(duedate, project, fill = status_color))
+
+# Trick thing here: Progress is not used by GGPLOT
+demo_plot <- ggplot(demo_dt, aes(duedate, project, fill = status_color, progress = status))
 demo_plot <- demo_plot + geom_tile()
 demo_plot <- demo_plot + scale_fill_manual(breaks = demo_dt$status_color, values = demo_dt$status_color)
 demo_plot <- demo_plot + facet_grid(phase~.)
 demo_plot <- demo_plot + theme_minimal(base_size = 8) + removeGrid() + theme(legend.position = "none")
 demo_plot <- demo_plot + geom_vline(xintercept = Sys.Date(), colour = "red")
 demo_plot
+
+# Now make it more interactive / visually simpler: ----
+demo_plot <- demo_plot + theme(axis.text.y = element_blank(), axis.title.y = element_blank())
+demo_plot <- demo_plot + geom_vline(xintercept = as.numeric(Sys.Date()), colour = "red")
+ggplotly(demo_plot)
