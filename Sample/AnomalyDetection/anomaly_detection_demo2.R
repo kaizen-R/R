@@ -2,6 +2,8 @@
 # An exercise to play with anomaly detection concepts
 # Looking for massive files changes in a folder, "ransomware-style"
 
+# NOT my cleanest code... But this goes hand in hand with a blog post explaining the process.
+
 library(tidyverse)
 library(tibbletime) # Needed for Anomalize
 library(ggplot2)
