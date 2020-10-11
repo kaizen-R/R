@@ -1,0 +1,26 @@
+This example allows to read in a "Risk Register" in CSV (Excel exported, CSV2) format.
+
+The risk register must have a header with the following headers (variables)
+
+Risk_ID;Date_identified;Project_Name;Risk_Name;Risk_type;Description;Probability;Impact;Reaction;Reaction_details;Date_closed
+
+A sample CSV file could be as follows:
+
+Risk_ID;Date_identified;Project_Name;Risk_Name;Risk_type;Description;Probability;Impact;Reaction;Reaction_details;Date_closed
+R1;2020/9/12;Migration Project1;Network Dependency;Planning;Some security tools depend on networking infrastructure that might not be ready in time for deployment;1;3;Accept;Re-plan security tools upon network risk materialisation (i.e. avoid project padding);2020/10/1
+R2;2020/9/18;Migration Project1;Insufficient licenses;Cost;Licenses provisioned might not cover all users base;3;2;Mitigate;Review users for the platform expected after migration;2020/10/1
+R3;2020/9/18;Migration Project1;Incompatible Network interfaces for new Appliances;Cost;New version of HW requires SFP+ at 10Gbps;3;1;Avoid;Buy new interfaces;2020/10/1
+R4;2020/9/12;Migration Project1;Missing functional team member overlap;Personnel;One of the members of the project team in charge of networking cannot hand-over to other team members;1;2;Transfer;Require the consulting firm (by contract) to provide profiles and availability to cover for the position;2020/9/17
+R5;2020/10/1;Migration Project1;Decommission of firewall;Scope;New SDN network will handle some of the old functional separation of segments through VLANs and switching;3;1;Accept;Decommission FW;2020/10/1
+R6;2020/10/9;Migration Project1;New configuration for Federation system;Technical;RBAC authorisation will change based on token claims for Platform X;1;2;Mitigate;Review roles for Platform X;
+R7;2020/9/12;Migration Project1;Some other risk 1;Technical;Some text describing the risk.;0;3;Avoid;Avoidance Action;2020/9/12
+R8;2020/9/13;Migration Project1;Some other risk 2;Personnel;Some text describing the risk.;3;2;Accept;Select new profile for new member team;
+R9;2020/9/14;Migration Project1;Some other risk 3;Scope;Some text describing the risk.;2;2;Mitigate;Review with Project Sponsor & Client the corresponding requirement.;2020/9/21
+R10;2020/9/14;Migration Project1;Some other risk 4;Planning;Some text describing the risk.;2;2;Mitigate;Re-plan Milestone N;2020/9/21
+R11;2020/9/14;Security Project1;AV detection inefficient for APTs;Technical;Some text describing the risk.;2;3;Mitigate;Add Unit-Test validations before production deployment.;
+R12;2020/9/18;Security Project1;Sample EICAR not detected during tests;Technical;Some text describing the risk.;2;2;Transfer;Require vendor to review rule-set;2020/9/25
+R13;2020/9/22;Security Project1;Availability of virtualisation platform;Planning;AV console depends on virtualisation platform being available with sufficient capacity;2;3;Accept;Re-plan AV console deployment upon materialisation of insufficient virtualisation platform capacity;
+R14;2020/10/1;Security Project1;Vendor will launch new version of agents in November;Planning;New version has functionality Y that is a nice-to-have;3;1;Accept;External Dependency. Postpone deployment of new agents version for after end of project.;2020/10/1
+R15;2020/10/1;Security Project1;Deployment Milestone at risk 1;Planning;Some text describing the risk.;1;3;Accept;Re-plan for urgent items upon risk materialisation.;
+R16;2020/10/1;Security Project1;Insufficient resources;Cost;One hypothetical AV console will not sustain reporting from all deployed agents;Bad;3;Mitigate;Evolve HA design & Test LB;
+R17;2020/8/7;Security Project2;URL Classification insufficient for Social Networking Browsing;Technical;New Social Network Z is not always classified as non-work-related social network;3;1;Transfer;Require vendor to review rule-set;2020/9/2
