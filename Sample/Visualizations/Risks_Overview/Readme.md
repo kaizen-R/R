@@ -27,6 +27,8 @@ This demo includes quite a few sample things:
 ## Notes on future work:
 
 This has MUCH room for improvement, as one could:
+* add many more error checks
+* add compatibility for input in different formats (namely: Excel & CSV instead of CSV2)
 * highlight the clicked risk
 * review the positionning around the x & y axis, as this visualization seems to indicate two risks with the same probability & impact have different values, which is not true.
 * add more filters: Filter by risk type, radio button for showing all risks or only risks that are not yet closed (variable "Date_closed" empty or not)...
