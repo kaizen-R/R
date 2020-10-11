@@ -1,9 +1,12 @@
 # Intro
+
+Everything done here... Could be done in Excel, I guess. This is just an exercise :)
+
 This example allows to read in a "Risk Register" in CSV (Excel exported CSV2 format, as I am European and the "," is a decimal separator).
 
 # What is this about?
 
-This script takes a "Risk Register" table and helps with a (rather simplified) demo visualization.
+This script takes a "Risk Register" table and helps with an interactive (rather simplified) demo visualization.
 
 ## What you will get:
 
@@ -17,10 +20,10 @@ It then creates 3 output visualizations:
 
 ## To be noted about this Demo code:
 This demo includes quite a few sample things:
-* use of a global variable to keep a copy of a temporary when to be used where needed (using "<<-"), which is not great
+* use of a global variable to keep a copy of a temporary when to be used where needed (using "<<-"), which is not great in theory but helps sometimes.
 * use of reactiveVal() & observeEvent() for updating dataset used by the dashboard
-* filter for project selection (we could use similar approaches for risk type, etc.)
-* file input for a better UX, as opposed to having her editing the code
+* filter for project selection (we could use similar approaches for risk type filter, etc.)
+* file input for a better UX, as opposed to having the user editing the code to get to the right file
 * sample tryCatch() code for controlling incorrect input (INCOMPLETE, but this is a demo)
 * interactive Risk visualization in GGPlot as scatterplot of probability * impact with Jitter (noise) added to positions to avoid overlap
 * nearest point selection based on x-y clicked position
@@ -39,10 +42,16 @@ This has MUCH room for improvement, as one could:
 And a long list of more details to be considered
 
 # Input data format
-The risk register must have a header with the following headers (variables), here shown with the semi-colon separator:
+
+In this case we focus on a "Risk Register" dataset. I created one from scratch for this exercise, related to three hypothetical IT Security-related projects.
+Keeping a risk register is good practice in Project Management. One needs to keep track of certain things, like "when a risk is identified", how many risks do we have on the table right now, the types of risk (related to the team, costs, scope...). And a dashboard can help report on those things visually (we are wired to ingest data in a more "visual" format than plain tables of data...).
+
+The risk register in this case must have a header, with the following variables (although some of them are not used in the code), here shown with the semicolon separator:
 
 Risk_ID;Date_identified;Project_Name;Risk_Name;Risk_type;Description;Probability;Impact;Reaction;Reaction_details;Date_closed
 
 A sample CSV file could be as the one attached here (done in CSV2 on purpose, in spite of not being beautiful in GitHub :))
+Please check it before using the script.
 
+Note that dates MUST be in the format YYYY/MM/DD (which is just a choice I made a long time ago to default to, as it helps order such columns numerically to do so, e.g. for files in a folder...).
 Note that you could change the input to accept CSV with "," as a separator by editing the read.csv2() and changing it to read.csv().
