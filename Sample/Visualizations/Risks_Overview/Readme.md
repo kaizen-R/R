@@ -15,6 +15,15 @@ It then creates 3 output visualizations:
 * A Risk's details text box, showing the details about the risk dot nearest to the clicked position in the first visualization (thereby making it a bit more interactive)
 * A Risks created count timeline, thereby allowing to see how many risks were created over time.
 
+## To be noted about this Demo code:
+This demo includes quite a few sample things:
+* reactiveVal() for updating dataset used by the dashboard
+* filter for project selection (we could use similar approaches for risk type, etc.)
+* file input for a better UX, as opposed to having her editing the code
+* sample tryCatch() code for controlling incorrect input (INCOMPLETE, but this is a demo)
+* interactive Risk visualization in GGPlot as scatterplot of probability * impact with Jitter (noise) added to positions to avoid overlap
+* nearest point selection based on x-y clicked position
+
 ## Notes on future work:
 
 This has MUCH room for improvement, as one could:
