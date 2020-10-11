@@ -17,7 +17,8 @@ It then creates 3 output visualizations:
 
 ## To be noted about this Demo code:
 This demo includes quite a few sample things:
-* reactiveVal() for updating dataset used by the dashboard
+* use of a global variable to keep a copy of a temporary when to be used where needed (using "<<-"), which is not great
+* use of reactiveVal() & observeEvent() for updating dataset used by the dashboard
 * filter for project selection (we could use similar approaches for risk type, etc.)
 * file input for a better UX, as opposed to having her editing the code
 * sample tryCatch() code for controlling incorrect input (INCOMPLETE, but this is a demo)
@@ -28,6 +29,7 @@ This demo includes quite a few sample things:
 
 This has MUCH room for improvement, as one could:
 * add many more error checks
+* give better feedback (that is, even SOME feedback) to the user about incorrect output
 * add compatibility for input in different formats (namely: Excel & CSV instead of CSV2)
 * highlight the clicked risk
 * review the positionning around the x & y axis, as this visualization seems to indicate two risks with the same probability & impact have different values, which is not true.
