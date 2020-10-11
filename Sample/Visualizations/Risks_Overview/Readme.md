@@ -1,17 +1,35 @@
-This example allows to read in a "Risk Register" in CSV (Excel exported, CSV2) format.
+# Intro
+This example allows to read in a "Risk Register" in CSV (Excel exported CSV2 format, as I am European and the "," is a decimal separator).
 
-The risk register must have a header with the following headers (variables)
+# What is this about?
+
+This script takes a "Risk Register" table and helps with a (rather simplified) demo visualization.
+
+## What you will get:
+
+It takes input from the user as a file input (see below for correct input format).
+Then it updates a "projects filter", to allow to filter the output by project name.
+
+It then creates 3 output visualizations:
+* A Risk Plot, where Probability and Impact are shown in x & y axis respectively. Because risks will normally have values of probability & impact will be integers in {1, 2, 3} (encoded for "low", "medium", "high" respectively), two risks with the same values for X & Y would overlap. We therefore throw in some noise to the position, so that two risks do not completely overlap.
+* A Risk's details text box, showing the details about the risk dot nearest to the clicked position in the first visualization (thereby making it a bit more interactive)
+* A Risks created count timeline, thereby allowing to see how many risks were created over time.
+
+## Notes on future work:
+
+This has MUCH room for improvement, as one could:
+* highlight the clicked risk
+* review the positionning around the x & y axis, as this visualization seems to indicate two risks with the same probability & impact have different values, which is not true.
+* add more filters: Filter by risk type, radio button for showing all risks or only risks that are not yet closed (variable "Date_closed" empty or not)...
+* better wrapping around risk details text
+* ...
+And a long list of more details to be considered
+
+# Input data format
+The risk register must have a header with the following headers (variables), here shown with the semi-colon separator:
 
 Risk_ID;Date_identified;Project_Name;Risk_Name;Risk_type;Description;Probability;Impact;Reaction;Reaction_details;Date_closed
 
-A sample CSV file could be as follows:
+A sample CSV file could be as the one attached here (done in CSV2 on purpose, in spite of not being beautiful in GitHub :))
 
-Risk_ID;Date_identified;Project_Name;Risk_Name;Risk_type;Description;Probability;Impact;Reaction;Reaction_details;Date_closed
-R1;2020/9/12;Migration Project1;Network Dependency;Planning;Some security tools depend on networking infrastructure that might not be ready in time for deployment;1;3;Accept;Re-plan security tools upon network risk materialisation (i.e. avoid project padding);2020/10/1
-R2;2020/9/18;Migration Project1;Insufficient licenses;Cost;Licenses provisioned might not cover all users base;3;2;Mitigate;Review users for the platform expected after migration;2020/10/1
-R3;2020/9/18;Migration Project1;Incompatible Network interfaces for new Appliances;Cost;New version of HW requires SFP+ at 10Gbps;3;1;Avoid;Buy new interfaces;2020/10/1
-R4;2020/9/12;Migration Project1;Missing functional team member overlap;Personnel;One of the members of the project team in charge of networking cannot hand-over to other team members;1;2;Transfer;Require the consulting firm (by contract) to provide profiles and availability to cover for the position;2020/9/17
-R5;2020/10/1;Migration Project1;Decommission of firewall;Scope;New SDN network will handle some of the old functional separation of segments through VLANs and switching;3;1;Accept;Decommission FW;2020/10/1
-
-In Excel (or equivalent) it would look as follows:
-
+Note that you could change the input to accept CSV with "," as a separator by editing the read.csv2() and changing it to read.csv().
