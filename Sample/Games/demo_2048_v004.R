@@ -139,7 +139,7 @@ play_random_game <- function() {
     # print("Available Next Moves:")
     # print(next_move)
     # flush.console()
-    if(length(available_positions) > 1) {
+    if(length(available_positions) >= 1) {
       one_game <- next_move[[sample(available_positions, 1)]]
       one_game$board <- add_new_tile(one_game$board)
       one_game$n_moves <- one_game$n_moves + 1
@@ -243,7 +243,7 @@ play_40_30_20_10_game <- function() {
     # print("Available Next Moves:")
     # print(next_move)
     # flush.console()
-    if(length(available_positions) > 1) {
+    if(length(available_positions) >= 1) {
       one_game <- next_move[[sample(available_positions, 1)]]
       one_game$board <- add_new_tile(one_game$board)
       one_game$n_moves <- one_game$n_moves + 1
@@ -298,7 +298,7 @@ play_bruteforce1_game <- function() {
     # print("Available Next Moves:")
     # print(next_move)
     # flush.console()
-    if(length(position_score[position_score >= 0]) > 1) {
+    if(length(position_score[position_score >= 0]) >= 1) {
       one_game <- next_move[[which.max(position_score)]]
       one_game$board <- add_new_tile(one_game$board)
       one_game$n_moves <- one_game$n_moves + 1
@@ -363,7 +363,7 @@ play_bruteforceSquare_game <- function() {
     # print("Available Next Moves:")
     # print(next_move)
     # flush.console()
-    if(length(position_score[position_score >= 0]) > 1) {
+    if(length(position_score[position_score >= 0]) >= 1) {
       one_game <- next_move[[which.max(position_score)]]
       one_game$board <- add_new_tile(one_game$board)
       one_game$n_moves <- one_game$n_moves + 1
