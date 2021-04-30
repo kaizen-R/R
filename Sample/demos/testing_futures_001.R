@@ -1,6 +1,7 @@
 # Testing future package and future.apply
 
-# So we know that rbind.fill(lapply()) is faster than rbind+for loop.
+# So we know that rbind.fill(lapply()) is faster than rbind+for loop for
+# many-CSV-inputs, for instance...
 # But for "slow" functions, like Whois resolution, it might not be relevant.
 # In those cases, we could make things faster however, by parallelizing!
 # And I didn't know about "futures" until today...
