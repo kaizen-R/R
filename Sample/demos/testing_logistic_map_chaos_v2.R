@@ -1,5 +1,6 @@
 library(microbenchmark)
 library(tidyverse)
+library(testthat)
 
 my_logistic_map2 <- function(my_r, x) {
   my_r * x * (1-x)
@@ -46,3 +47,8 @@ v2 <- function() {
 microbenchmark(v1(),
                v2(),
                times = 5L)
+
+temp1 <- v1()
+temp2 <- v2()
+
+test_that(expect_equal(temp1[1,], temp2[1,]))
