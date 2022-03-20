@@ -51,4 +51,4 @@ microbenchmark(v1(),
 temp1 <- v1()
 temp2 <- v2()
 
-test_that(expect_equal(temp1[1,], temp2[1,]))
+test_that("comparing the two matrices", {expect_equal(temp1[1,], temp2[1,])})
