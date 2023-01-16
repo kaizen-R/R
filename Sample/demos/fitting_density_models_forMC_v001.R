@@ -41,3 +41,42 @@ vis_compare_hist(my_lognormvec, "lognormal") # ...
 t_fit <- fitdistr(my_normvec, "normal") # fitting a distribution to some data
 t_fit$estimate # looking at the estimated parameters for the fitted function
 sample_fit <- rnorm(t_fit$n, t_fit$estimate) # generating n values with the "fitted" distribution parameters
+
+##
+# PART II: Better package for the job
+##
+library(fitdistrplus) # SO MUCH better/easier than creating my own functions...
+
+descdist(my_normvec) # good 
+descdist(my_expvec) # good
+descdist(my_lognormvec) # Not as good here...
+
+my_beta <- rbeta(1000, shape1=3, shape2=0.5)
+plot(my_beta) # My function above is too simplistic, clearly...
+my_dbeta <- dbeta(seq(0, 1, 0.001), shape1=3, shape2=0.5)
+plot(my_dbeta)
+
+descdist(my_beta) 
+t_fit_beta <- fitdist(my_beta, "beta")
+t_badfit_weibull <- fitdist(my_beta, "weibull")
+plot(t_fit_beta)
+
+gofstat(list(t_fit_beta, t_badfit_weibull)) # AD test and KS test are indeed showing differences!
+
+# More testing for the fun of it...
+my_weibull <- rweibull(1000, shape=3)
+descdist(my_weibull)
+t_fit_weibull <- fitdist(my_weibull, "weibull", method = "mse")
+plot(t_fit_weibull)
+
+# Shamelessly testing code from documentation of fitdistrplus package (good, btw):
+set.seed(1234)
+x4 <- rweibull(n=1000,shape=2,scale=1)
+# fit of the good distribution
+f4 <- fitdist(x4,"weibull")
+plot(f4)
+# fit of a bad distribution
+f4b <- fitdist(x4,"cauchy")
+plot(f4b)
+
+gofstat(list(f4,f4b),fitnames=c("Weibull", "Cauchy"))
