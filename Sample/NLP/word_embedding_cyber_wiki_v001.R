@@ -117,3 +117,32 @@ plot_ly(df, x = ~x, y = ~y, type = "scatter", mode = 'text', text = ~word)
 
 df[df$word == 'firewall',]
 df[df$word == 'virus',]
+
+## Let's add some of what we learnt about DBScan clustering and 3D visu.
+
+library(dbscan) # Clustering (distances, i.e. "sub-symbolic" stuff)
+library(rgl) # For 3D Visus & Fun
+kNNdistplot(viz, minPts = 3)
+abline(h=0.2, col= "red", lty = 2) ## Noise at .7 for 4-NN distance
+## Step 1: Clustering using "KNN"
+res <- dbscan(viz, eps = 0.25, minPts = 3)
+plot(viz, col = res$cluster)
+hullplot(viz, res)
+
+
+plot_ly(df,
+        x = ~x,
+        y = ~y,
+        type = "scatter",
+        mode = 'text',
+        color = as.factor(res$cluster),
+        text = ~word) |>
+    layout(font = list(color = res$cluster))
+
+
+library(cluster)
+mds_wiki <- cmdscale(dist(embeddings), k = 3)
+library(rgl) # For 3D Visus & Fun
+plot3d(mds_wiki, type = 's', size = 2, col=res$cluster+1L)
+movie3d( spin3d(), duration = 10, fps = 40 )
+
