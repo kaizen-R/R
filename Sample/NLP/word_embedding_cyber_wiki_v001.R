@@ -123,12 +123,11 @@ df[df$word == 'virus',]
 library(dbscan) # Clustering (distances, i.e. "sub-symbolic" stuff)
 library(rgl) # For 3D Visus & Fun
 kNNdistplot(viz, minPts = 3)
-abline(h=0.2, col= "red", lty = 2) ## Noise at .7 for 4-NN distance
-## Step 1: Clustering using "KNN"
+abline(h=0.25, col= "red", lty = 2)
+## dbscan on the projected 2D
 res <- dbscan(viz, eps = 0.25, minPts = 3)
 plot(viz, col = res$cluster)
 hullplot(viz, res)
-
 
 plot_ly(df,
         x = ~x,
@@ -141,8 +140,10 @@ plot_ly(df,
 
 
 library(cluster)
-mds_wiki <- cmdscale(dist(embeddings), k = 3)
+mds_wiki <- cmdscale(dist(embeddings), k = 3) ## project from 30D to 3D
+
 library(rgl) # For 3D Visus & Fun
+
 plot3d(mds_wiki, type = 's', size = 2, col=res$cluster+1L)
-movie3d( spin3d(), duration = 10, fps = 40 )
+movie3d(spin3d(), duration = 10, fps = 40 )
 
